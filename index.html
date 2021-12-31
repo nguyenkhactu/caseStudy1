@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nhap</title>
+    <style type="text/css">
+        div{
+            background-image: url("imgTree/background2.jpg");
+            background-size: cover;
+            width: 1500px;
+            height: 700px;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+<div id="modDiv">
+    <canvas id="MyCanvas" width="1500" height="700" style="border:2px solid red"></canvas>
+</div>
+<script>
+
+    let canvas = document.getElementById("MyCanvas")
+    let ctx = canvas.getContext("2d");
+</script>
+<script>//clas cay
+
+class Tree {
+    _x;
+    _y;
+    _width;
+    _height;
+    _src;
+    _hp;
+    _xp;
+    _growingTree;
+    _die;
+
+
+    get x() {
+        return this._x;
+    }
+
+    set x(value) {
+        this._x = value;
+    }
+
+    get y() {
+        return this._y;
+    }
+
+    set y(value) {
+        this._y = value;
+    }
+
+    get width() {
+        return this._width;
+    }
+
+    set width(value) {
+        this._width = value;
+    }
+
+    get height() {
+        return this._height;
+    }
+
+    set height(value) {
+        this._height = value;
+    }
+
+    get src() {
+        return this._src;
+    }
+
+    set src(value) {
+        this._src = value;
+    }
+
+    get hp() {
+        return this._hp;
+    }
+
+    set hp(value) {
+        this._hp = value;
+    }
+
+    get xp() {
+        return this._xp;
+    }
+
+    set xp(value) {
+        this._xp = value;
+    }
+
+    get growingTree() {
+        return this._growingTree;
+    }
+
+    set growingTree(value) {
+        this._growingTree = value;
+    }
+
+    get die() {
+        return this._die;
+    }
+
+    set die(value) {
+        this._die = value;
+    }
+
+    constructor(x, y, width, height, src, hp, xp, growingTree, die) {
+        this._x = x;
+        this._y = y;
+        this._width = width;
+        this._height = height;
+        this._src = src;
+        this._hp = hp;
+        this._xp = xp;
+        this._growingTree = growingTree;
+        this._die = die;
+    }
+
+    drawTree(ctx) {
+        let image = new Image();
+        image.src = this._src;
+        ctx.beginPath();
+        //image.onload = () => {
+        ctx.drawImage(image, this._x, this._y, this._width, this._height,)
+        //}
+    }
+}
+
+
+</script>
+<script>//class wind
+class Wind {
+    _x;
+    _y;
+    _width;
+    _height;
+    _src;
+    _speed;
+
+    get x() {
+        return this._x;
+    }
+
+    set x(value) {
+        this._x = value;
+    }
+
+    get y() {
+        return this._y;
+    }
+
+    set y(value) {
+        this._y = value;
+    }
+
+    get width() {
+        return this._width;
+    }
+
+    set width(value) {
+        this._width = value;
+    }
+
+    get height() {
+        return this._height;
+    }
+
+    set height(value) {
+        this._height = value;
+    }
+
+    get src() {
+        return this._src;
+    }
+
+    set src(value) {
+        this._src = value;
+    }
+
+    get speed() {
+        return this._speed;
+    }
+
+    set speed(value) {
+        this._speed = value;
+    }
+
+    constructor(x, y, width, height, src, speed) {
+        this._x = x;
+        this._y = y;
+        this._width = width;
+        this._height = height;
+        this._src = src;
+        this._speed = speed;
+    }
+
+    moveDownleft() {
+        this._x -= this._speed;
+        this._y += this._speed;
+    };
+
+    moveDownright() {
+        this._x += this._speed;
+        this._y += this._speed;
+    }
+
+    drawWind1() {
+
+        let windIMage = new Image();
+        ctx.beginPath()
+        windIMage.src = this._src;
+        windIMage.onload = () => {
+            ctx.drawImage(windIMage, this._x, this._y, this._width, this._height)
+        }
+    }
+}
+
+
+</script>
+<script>// function
+let imgList = [, 'imgWind/leaf(1).png', 'imgWind/leaf(2) .png', 'imgWind/leaf(3) .png', 'imgWind/leaf(4).png'];
+let myWind1 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let myWind2 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let myWind3 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let myWind4 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let myWind5 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let myWind6 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let myWind7 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let myWind8 = new Wind(Math.random() * canvas.clientWidth, Math.random() * 200, 40, 40, "imgWind/leaf(1).png", Math.random() * 30);
+let arrayWind = [myWind1, myWind2, myWind3, myWind4, myWind5, myWind6, myWind7, myWind8];
+function backgroundImage(){
+    let windIMage = new Image();
+    ctx.beginPath()
+    windIMage.src = 'imgTree/tải xuống.jpg';
+    windIMage.onload = () => {
+        ctx.drawImage(windIMage,0,0,canvas.clientWidth,canvas.clientHeight)
+    }
+}
+
+function showHp(j) {
+
+    if (arrayWind[j].x > tree.x && arrayWind[j].x < tree.x + tree.width) {
+        if (arrayWind[j].y > tree.y && arrayWind[j].y < tree.y + tree.height) {
+            if (tree.src=== 'imgTree/treeMind.png'){
+                return
+            }
+            tree.xp += 1;
+            if (arrayWind[j].x > tree.x + tree.width * 5 / 6 && tree.src === 'imgTree/treeRight.png') {
+                tree.hp -= 10;
+            }
+            if (arrayWind[j].x > tree.x && arrayWind[j].x < tree.x + tree.width / 6 && tree.src === 'imgTree/treeLeft.png') {
+                tree.hp -= 10;
+            }
+        }
+    }
+    if (tree.xp !== 0) {
+        if (tree.xp % 100 === 0) {
+            tree.growingTree += 1;
+
+        }
+    }
+    if (tree.hp <= 0) {
+        alert("Bạn đã tạch - ấn F5 hoặc Ctrl R - để chơi lại ")
+        clearInterval(setInterval1)
+
+    }
+}
+
+// if (hpTree.hp<= 0){   chưa sử lý
+// clearInterval(setInterval1);
+// tree.src= 'imgTree/tree.jpg';
+// }
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, 1500, 700);
+}
+
+function drawIimage(j) {
+    for (let i = 0; i < imgList.length; i++) {
+        let temp = imgList[2];
+        imgList.shift();
+        imgList.push(temp)
+        arrayWind[j]._src = imgList[0];
+    }
+}
+
+function collision(j) {//va chạm
+    if (arrayWind[j].y > canvas.clientHeight || arrayWind[j].x > canvas.clientWidth) {
+        arrayWind[j].x = Math.random() * canvas.clientWidth;
+        arrayWind[j].y = Math.random() * canvas.clientHeight / 5;
+    }
+    if (arrayWind[j].x < canvas.clientWidth / 2 && arrayWind[j].x > 0) {
+        return (arrayWind[j].moveDownright());
+    }
+    if (arrayWind[j].x > canvas.clientWidth / 2 && arrayWind[j].x < canvas.clientWidth) {
+        return (arrayWind[j].moveDownleft());
+    }
+}
+
+
+let tree = new Tree(canvas.clientWidth/2 - 43, 500, 100, 100, 'imgTree/treeMind.png', 100, 0, 0, 'imgTree/tree.jpg')
+tree.drawTree(ctx);
+
+
+function moveTree(move) {
+    switch (event.keyCode) {
+        case 37: {
+            clearCanvas();//left
+            tree._src = 'imgTree/treeLeft.png'
+            tree.drawTree(ctx)
+            break
+        }
+        case 39: {//right
+            clearCanvas();
+            tree._src = 'imgTree/treeRight.png';
+            tree.drawTree(ctx)
+            break;
+        }
+        case 40: {
+            clearCanvas();
+
+            break;
+        }
+        case 38: {
+            clearCanvas();
+
+            break;
+        }
+    }
+}
+
+function drawText() {
+    ctx.font = "20px red";
+    ctx.fillStyle = 'red';
+    ctx.fillText("Sức Sống :" + tree.hp, 0, 20);
+    ctx.fillText("XP :" + tree.xp, 0, 50);
+    ctx.fillText("growingTree :" + tree.growingTree, 0, 80);
+    ctx.font = "30px red";
+
+}
+
+function canvasUpdat() {
+    for (let j = 0; j < arrayWind.length; j++) {
+        collision(j)//xét đk va chạm
+
+        drawIimage(j)//gán lại địa chỉ ảnh
+        clearCanvas()
+        showHp(j)
+        arrayWind[j].drawWind1(ctx)
+        drawText()
+        tree.drawTree(ctx)
+
+    }
+}
+
+document.addEventListener('keydown', moveTree);
+let setInterval1 = setInterval(canvasUpdat, 100)
+
+</script>
+</body>
+</html>
